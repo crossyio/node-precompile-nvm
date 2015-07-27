@@ -19,5 +19,6 @@ apt-get clean'
 RUN proot -r /opt/rootfs -q qemu-arm-static /bin/bash -c 'curl http://node-arm.herokuapp.com/node_latest_armhf.deb -o /tmp/node_latest_armhf.deb && dpkg -i /tmp/node_latest_armhf.deb'
 RUN proot -r /opt/rootfs -q qemu-arm-static /bin/bash -c 'curl -L https://npmjs.org/install.sh | sh'
 RUN proot -r /opt/rootfs -q qemu-arm-static /bin/bash -c 'mkdir -p /root/.node-gyp && chmod 777 /root/.node-gyp'
+RUN proot -r /opt/rootfs -q qemu-arm-static -0 /bin/bash -c 'npm install -g node-pre-compile-to-s3'
 
-#ENTRYPOINT ['proot -r /opt/rootfs -q qemu-arm-static']
+# ENTRYPOINT '/usr/bin/proot -r /opt/rootfs -q qemu-arm-static /bin/bash'
